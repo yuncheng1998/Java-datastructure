@@ -5,40 +5,40 @@ import java.util.Scanner;
 public class FirstLab {
     public static void main(String[] args)  {
 
-        String go;
+        String judge;
         List list;
         int local;
-        Scanner br = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         try{
             do{
-                System.out.println("输入数字，按下‘#’结束");
+                System.out.println("输入数字，#结尾结束");
                 FirstLab lab = new FirstLab();
-                list = lab.CreatList();
+                list = lab.createList();
                 System.out.println("请输入相邻的位数");
-                local = br.nextInt();
+                local = scanner.nextInt();
                 lab.Adjmax(list, local);
-                System.out.println("继续请输入：Yes");
-                go =  br.next();
-            }while(go.equals("Yes") );
+                System.out.println("继续输入?(Y/N)");
+                judge =  scanner.next();
+            }while(judge.equals("Y") );
         }catch(Exception e){
             System.out.println("输入参数有误");
         }
 
     }
 
-    private List CreatList(){
+    private List createList(){
         List list = new List();
-        String k;
+        String str;
         int number;
-        Scanner cin = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         /*读取输入的链表*/
-        while(cin.hasNext()){
-            k = cin.next();
-            if(k.equals("#")){
+        while(scanner.hasNext()){
+            str = scanner.next();
+            if(str.equals("#")){
                 break;
             }else{
-                number = Integer.valueOf(k);
+                number = Integer.valueOf(str);
             }
             list.insertNode(number);
         }
@@ -48,7 +48,7 @@ public class FirstLab {
 
     /*求相邻最大和*/
     private void Adjmax(List L, int k){
-        Node p1,p2;
+        List.Node p1,p2;
         int k1;
         int sum=0, max=0;
         int location=0;//记录最大值位置
@@ -73,7 +73,7 @@ public class FirstLab {
             p1 = p1.next;
             sum = 0;
         }
-        System.out.println("  序号: "+location +"  data值: "+ val + "  最大值: "+ max);
+        System.out.println("第"+location + "个数，" +"值为"+ val + "，最大值:"+ max);
     }
 
 }

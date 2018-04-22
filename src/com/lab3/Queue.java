@@ -4,12 +4,12 @@ class Queue {
 
     private Node front, rear;
 
-    Queue(){
+    Queue() {       //构造Queue初始状态front和rear为null，判断Queue是否为空
         front = null;
         rear = null;
     }
 
-    class Node {
+    class Node {        //将Node封装在Queue中成为内部类，由Queue类的处理Node
         private char data;
         Node next;
 
@@ -31,8 +31,9 @@ class Queue {
         Node node = new Node(c);
         if(isEmpty())
             rear.next = node;
-        else
+        else {
             front = node;
+        }
         rear = node;
     }
 

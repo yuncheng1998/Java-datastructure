@@ -27,5 +27,6 @@ class Table {
         }
         return hashMap;
     }
+    //TODO:追加统计
 
 }

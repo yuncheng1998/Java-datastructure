@@ -14,6 +14,7 @@ public class Lab6 {
         String line;
         ArrayList<String> arrayList = null;
         while ((line = br.readLine()) != null) {
+            //TODO: 匹配
             arrayList = new ArrayList<>(Arrays.asList(line.split(" ")));
         }
 

@@ -74,7 +74,7 @@ class List {
             tail.next = p;
             tail =p;
         }
-        id++;
         tail.next = null;
+        id++;
     }
 }

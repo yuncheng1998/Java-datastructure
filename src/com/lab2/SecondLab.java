@@ -15,12 +15,12 @@ public class SecondLab {
         String fileRead = scanner.nextLine();
 
         if (fileRead.equals("Y")) {
-            LineNumberReader number = new LineNumberReader(new FileReader("/home/yuncheng/IdeaProjects/DataStr/src/com/lab1/exp.txt"));
+            LineNumberReader number = new LineNumberReader(new FileReader("/home/yuncheng/IdeaProjects/DataStr/src/com/lab2/exp.txt"));
                 String line;
                 number.setLineNumber(0);
                 while ((line = number.readLine()) != null) {
                     System.out.println(line);
-                    func(line);
+                    handleExpression(line);
                 }
 
 
@@ -28,14 +28,14 @@ public class SecondLab {
             System.out.println("输入表达式或quit退出");
             inExp = scanner.nextLine();
             while (!inExp.equals("quit")) {
-                func(inExp);
+                handleExpression(inExp);
                 System.out.println("输入表达式或quit退出");
                 inExp = scanner.nextLine();
             }
         }
     }
 
-    private static void func(String inExp) {
+    private static void handleExpression(String inExp) {
         String postExp;
         try {
             postExp = toPostExp(inExp);

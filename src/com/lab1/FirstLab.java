@@ -12,7 +12,7 @@ public class FirstLab {
         try{
             do{
                 System.out.println("输入数字，#结尾结束");
-                list = FirstLab.createList();
+                list = List.createList();
                 System.out.println("请输入相邻的位数");
                 location = scanner.nextInt();
                 FirstLab.Adjmax(list, location);
@@ -23,26 +23,6 @@ public class FirstLab {
             System.out.println("输入参数有误");
         }
 
-    }
-
-    private static List createList(){
-        List list = new List();
-        String str;
-        int number;
-        Scanner scanner = new Scanner(System.in);
-
-        /*读取输入的链表*/
-        while(scanner.hasNext()){
-            str = scanner.next();
-            if(str.equals("#")){
-                break;
-            }else{
-                number = Integer.valueOf(str);
-            }
-            list.insertNode(number);
-        }
-        list.printList(list.getHead());
-        return list;
     }
 
     /*求相邻最大和*/

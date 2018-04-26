@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static com.lab4.Tree.handle2Tree;
+
 public class ForthLab {
     public static void main(String[] args) throws IOException {
 
@@ -47,12 +49,4 @@ public class ForthLab {
         }
     }
 
-    private static void handle2Tree(ArrayList<String> str) {
-        Tree tree = new Tree();
-        for (String s : str) {
-            tree.buildTree(tree.root, s);
-        }
-        tree.inorderNor();
-        System.out.println();
-    }
 }

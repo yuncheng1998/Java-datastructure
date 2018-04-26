@@ -1,5 +1,6 @@
 package com.lab4;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 class Tree {
@@ -14,13 +15,13 @@ class Tree {
         }
     }
 
-    Node root;//根节点
+    private Node root;//根节点
 
-    Tree(){
+    private Tree(){
         root = null;
     }
     //非递归算法遍历二叉树
-    void inorderNor(){
+    private void inorderNor(){
         Stack<Node> s1 = new Stack<>();
         Node p = root;
         System.out.print("中序遍历: ");
@@ -37,8 +38,8 @@ class Tree {
 
         }
     }
-
-    void buildTree(Node node, String data){
+    //根据字典顺序向树中添加节点
+    private void buildTree(Node node, String data){
         if(root == null){
             root = new Node(data);
         }else{
@@ -57,5 +58,14 @@ class Tree {
             }
         }
 
+    }
+    //把字符串数组解析到树中
+    static void handle2Tree(ArrayList<String> str) {
+        Tree tree = new Tree();
+        for (String s : str) {
+            tree.buildTree(tree.root, s);
+        }
+        tree.inorderNor();
+        System.out.println();
     }
 }

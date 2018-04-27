@@ -37,12 +37,12 @@ class List {
     }
 
 
-    Node getHead() {
+    private Node getHead() {
         return this.head;
     }
 
 
-    int getLength(){
+    private int getLength(){
         int len = 0;
         Node p = head;
         while( p!=null ){
@@ -97,6 +97,34 @@ class List {
         }
         list.printList(list.getHead());
         return list;
+    }
+
+    static String Adjmax(List L, int k){
+        List.Node p, q;
+        int k1;
+        int sum = 0, max = 0;
+        int location = 0;   //记录最大值位置
+        int value = 0;      //记录最大的data
+        p = L.getHead();
+        if(p == null || (L.getLength()) - 1 < k ){
+            return "相邻位数超范围";
+        }
+        while(p != null){
+            k1 = k;
+            q = p;
+            while((k1-- != 0) && (q != null)){
+                sum += q.getData();
+                q = q.next;
+            }
+            if(sum > max){
+                location = p.getId();
+                value = p.getData();
+                max = sum;
+            }
+            p = p.next;
+            sum = 0;
+        }
+        return "第"+location + "个数，" +"值为"+ value + "，最大值:"+ max;
     }
 
 }

@@ -15,7 +15,8 @@ public class FirstLab {
                 list = List.createList();
                 System.out.println("请输入相邻的位数");
                 location = scanner.nextInt();
-                FirstLab.Adjmax(list, location);
+                String str = List.Adjmax(list, location);
+                System.out.println(str);
                 System.out.println("继续输入?(Y/N)");
                 judge =  scanner.next();
             }while(judge.equals("Y") );
@@ -24,35 +25,4 @@ public class FirstLab {
         }
 
     }
-
-    /*求相邻最大和*/
-    private static void Adjmax(List L, int k){
-        List.Node p, q;
-        int k1;
-        int sum = 0, max = 0;
-        int location = 0;//记录最大值位置
-        int value = 0;//记录最大的data
-        p = L.getHead();
-        if(p == null || (L.getLength()) - 1 < k ){
-            System.out.println("相邻位数超范围");
-            return ;
-        }
-        while(p != null){
-            k1 = k;
-            q = p;
-            while((k1-- != 0) && (q != null)){
-                sum += q.getData();
-                q = q.next;
-            }
-            if(sum > max){
-                location = p.getId();
-                value = p.getData();
-                max = sum;
-            }
-            p = p.next;
-            sum = 0;
-        }
-        System.out.println("第"+location + "个数，" +"值为"+ value + "，最大值:"+ max);
-    }
-
 }

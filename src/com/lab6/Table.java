@@ -1,32 +1,71 @@
 package com.lab6;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 class Table {
-    private HashMap<String, Integer> hashMap;
 
-    private ArrayList<String> strings;
+    private HashMap<String, Integer> map = new HashMap<>();
 
-    Table(ArrayList<String> strings) {
-        this.strings = strings;
-        this.hashMap = new HashMap<>();
+    HashMap<String, Integer> getTable() {
+
+        return this.map;
     }
 
-    HashMap doStatistics () {
-
-        for (String str : strings) {  //key -> 单词, value -> 出现的次数
-            if (hashMap == null ||hashMap.get(str) == null) {         //get(key) 没有这个单词->加入，num=1
-                assert hashMap != null;
-                hashMap.put(str, 1);
-            } else {                                //有单词，把value取出加1
-                Integer num = hashMap.get(str);
-                num = num + 1;
-                hashMap.put(str, num);
+    //查找读取后的字符串中的单词，进行计数
+    void countWords(String str, HashMap<String, Integer> map) {
+        if (str == null || str.equals(" ")) {
+            System.out.print("读取文件为空");
+            return;
+        }
+        String[] words = str.split("[^a-zA-Z0-9_]+");
+        //TODO 大小写
+        for (String word : words) {
+            if (!map.containsKey(word)) {
+                map.put(word, 1);
+            } else {
+                map.put(word, map.get(word) + 1);
             }
         }
-        return hashMap;
     }
-    //TODO:追加统计
+
+    //根据用户的需求查找
+    void searchWord(String word, Map map){
+        if(map.get(word) != null){
+            System.out.println(word + "出现的频率: " + map.get(word));
+        }else{
+            System.out.println("没有找到" + word);
+        }
+    }
+    
+
+    void doStatistics(Table table, FileOpt fileOpt, String path, int number) {
+
+        List<Map.Entry<String, Integer>> List_Data = new ArrayList<>(table.getTable().entrySet());
+        List_Data.sort(new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o2.getValue() != null && o1.getValue() != null && o2.getValue().compareTo(o1.getValue()) > 0) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        });
+        if (number > List_Data.size()) {
+            System.out.println("单词数量小于" + number);
+        } else {
+            try {
+                for (int i = 0; i < number; i++) {
+                    String word = List_Data.get(i).getKey();
+                    String num = List_Data.get(i).getValue().toString();
+                    System.out.println(word + ":" + num + " ");
+                    fileOpt.write(word + ":" + num + " ", path);
+                }
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("排序时传入集合为空,程序结束");
+            }
+        }
+
+    }
+
 
 }

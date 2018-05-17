@@ -11,7 +11,7 @@ import static com.lab4.Tree.handle2Tree;
 
 public class ForthLab {
     public static void main(String[] args) throws IOException {
-
+        String FileName = "/home/yuncheng/IdeaProjects/DataStr/src/com/lab4/file.txt";
         Scanner scanner = new Scanner(System.in);
         String judge = "Y";
         String isFile;
@@ -21,7 +21,7 @@ public class ForthLab {
         isFile = scanner.next();
         switch (isFile) {
             case "Y":
-                LineNumberReader lineNumberReader = new LineNumberReader(new FileReader("/home/yuncheng/IdeaProjects/DataStr/src/com/lab4/file.txt"));
+                LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(FileName));
                 lineNumberReader.setLineNumber(0);
 
                 while ((line = lineNumberReader.readLine()) != null) {

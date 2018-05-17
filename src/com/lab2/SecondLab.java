@@ -8,13 +8,14 @@ import java.util.Scanner;
 public class SecondLab {
 
     public static void main(String[] args) throws IOException {
+        String FileName = "/home/yuncheng/IdeaProjects/DataStr/src/com/lab2/exp.txt";
         String inExp;
         Scanner scanner = new Scanner(System.in);
         System.out.println("是否从文件读入(Y/N)?");
         String fileRead = scanner.nextLine();
 
         if (fileRead.equals("Y")) {
-            LineNumberReader number = new LineNumberReader(new FileReader("/home/yuncheng/IdeaProjects/DataStr/src/com/lab2/exp.txt"));
+            LineNumberReader number = new LineNumberReader(new FileReader(FileName));
                 String line;
                 number.setLineNumber(0);
                 while ((line = number.readLine()) != null) {
@@ -23,8 +24,6 @@ public class SecondLab {
                     System.out.println("后缀表达式：" + postExp.getPostExp());
                     System.out.println("表达式的值：" + postExp.getValue());
                 }
-
-
         } else {
             System.out.println("输入表达式或quit退出");
             inExp = scanner.nextLine();
@@ -37,15 +36,6 @@ public class SecondLab {
             }
         }
     }
-
-
-
-
-
-
-
-
-
 
 }
 

@@ -61,6 +61,8 @@ class PostExp {
                         throw new IllegalArgumentException("输入表达式有误，括号不能匹配");
                     }
                 }
+            } else if (c == ' '){
+
             } else {
                 throw new IllegalArgumentException(c+ "");
             }
@@ -113,7 +115,7 @@ class PostExp {
     }
 
     private static boolean operatorCmp(char c, char top) {
-        if (c == '+' || c == '-') {             //新元素为+/-
+        if (c == '+' || c == '-') {              //新元素为+/-
             return true;
         } else if (c == '*' || c == '/') {       //
             return top == '*' || c == '/';

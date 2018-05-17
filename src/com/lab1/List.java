@@ -6,7 +6,7 @@ class List {
 
     private int id = 1;
 
-    private Node head,tail;//头结点和尾节点
+    private Node head, tail;//头结点和尾节点
 
     private List(){
         head = null;
@@ -68,7 +68,7 @@ class List {
         Node p;
         p = new Node(data);
         p.setId(id);
-        if(head == null){//空表插入
+        if(head == null){       //空表插入
             head = p;
             tail = head;
         }

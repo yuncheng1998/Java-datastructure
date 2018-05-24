@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FifthLab {
     public static void main(String[] args) throws IOException {
-        String FileName = "/home/yuncheng/IdeaProjects/DataStr/src/com/lab5/graph.txt";
+        String FileName = "/home/yuncheng/IdeaProjects/DataStr/src/com/lab5/CycleGraph";
         ArrayList<Integer> data = new ArrayList<>();
         ArrayList<String> relationship = new ArrayList<>();
         Graph graph = new Graph();
@@ -44,17 +44,19 @@ public class FifthLab {
                 String[] n = str.split(" ");
                 for (String node : n) {
                     data.add(Integer.parseInt(node));
+
                 }
-            } else {
-                System.out.println("空图");
+                System.out.println("输入边，例如1,2，输入end结束");
+                String line;
+                while (!(line = scanner1.nextLine()).equals("end")) {
+                    relationship.add(line);
+                }
+                graph.topSort(graph.createList(data, relationship));
+            } else {                System.out.println("空图");
+
             }
 
-            System.out.println("输入边，例如1,2，输入end结束");
-            String line;
-            while (!(line = scanner1.nextLine()).equals("end")) {
-                relationship.add(line);
-            }
-            graph.topSort(graph.createList(data, relationship));
+
         }
     }
 }

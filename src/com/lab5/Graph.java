@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 class Graph {
+    private int flagI = 0;
+    private int flagJ = 0;
+
     class ActivityNode { //表节点
         int head, tail;
         ActivityNode headLink;
@@ -33,18 +36,26 @@ class Graph {
         }
         for (String road : relationship) {
             String[] strings = road.split(",");
+            //求点vi和vj的位置
             for (int i = 0; i < vertexNodes.size(); i++) {
                 if (vertexNodes.get(i).data == Integer.parseInt(strings[0])) {
                     vi = i;
+                    flagI = 1;
                     break;
                 }
             }
             for (int i = 0; i < vertexNodes.size(); i++) {
                 if (vertexNodes.get(i).data == Integer.parseInt(strings[1])) {
                     vj = i;
+                    flagJ = 1;
                     break;
                 }
             }
+            if (flagI == 0 || flagJ == 0) {
+                System.out.println("输入错误");
+                return new ArrayList<>();
+            }
+            //弧节点，vi——>tail, vj——>head
             ActivityNode p = new ActivityNode();
             p.tail = vi;
             p.head = vj;
@@ -62,7 +73,7 @@ class Graph {
             count = 0;
             p = vertexNodes.get(i).fIn;
             while(p != null) {
-                count ++;
+                count++;
                 p = p.headLink;
             }
             id[i] = count;
@@ -97,16 +108,16 @@ class Graph {
                 id[k]--;
                 if (id[k] == 0) {
                     stack.push(k);
-                    activityNode = activityNode.tailLink;
                 }
+                activityNode = activityNode.tailLink;
             }
         }
-        if(count == vertexNodes.size())
-            System.out.println("无环图");
-        else
-            System.out.println("有环图");
-
-
+        if (flagI == 1 && flagJ == 1) {
+            if(count == vertexNodes.size())
+                System.out.println("无环图");
+            else
+                System.out.println("有环图");
+        }
     }
 
 

@@ -17,7 +17,7 @@ public class FirstLab {
                 if (location <= 0) {
                     System.out.println("k必须大于0");
                 } else {
-                    String str = List.Adjmax(list, location);
+                    String str = List.getMax(list, location);
                     System.out.println(str);
                 }
                 System.out.println("继续输入?(Y/N)");

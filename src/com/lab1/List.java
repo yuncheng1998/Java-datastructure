@@ -99,7 +99,7 @@ class List {
         return list;
     }
 
-    static String Adjmax(List L, int k){
+    static String getMax(List L, int k){
         List.Node p, q;
         int k1;
         int sum = 0, max = 0;

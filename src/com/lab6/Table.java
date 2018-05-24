@@ -24,8 +24,8 @@ class Table {
             return;
         }
         String[] words = str.split("[^a-zA-Z0-9_]+");
-        //TODO 大小写
         for (String word : words) {
+            word = word.toLowerCase();
             if (!map.containsKey(word)) {
                 map.put(word, 1);
             } else {
@@ -47,13 +47,11 @@ class Table {
     void doStatistics(Table table, FileOpt fileOpt, String path, int number) {
 
         List<Map.Entry<String, Integer>> List_Data = new ArrayList<>(table.getTable().entrySet());
-        List_Data.sort(new Comparator<Map.Entry<String, Integer>>() {
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if (o2.getValue() != null && o1.getValue() != null && o2.getValue().compareTo(o1.getValue()) > 0) {
-                    return 1;
-                } else {
-                    return -1;
-                }
+        List_Data.sort((o1, o2) -> {
+            if (o2.getValue() != null && o1.getValue() != null && o2.getValue().compareTo(o1.getValue()) > 0) {
+                return 1;
+            } else {
+                return -1;
             }
         });
         if (number > List_Data.size()) {

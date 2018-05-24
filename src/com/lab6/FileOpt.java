@@ -60,4 +60,36 @@ class FileOpt {
             e.printStackTrace();
         }
     }
+
+    static String mergeFiles(String file1, String file2) {
+        String outputFile = "outputFile";
+        try {
+            FileReader fr1=new FileReader(file1);//读取newFile.txt的内容
+            FileReader fr2=new FileReader(file2);//读取newFile1.txt的内容
+            BufferedReader br1=new BufferedReader(fr1);
+            BufferedReader br2=new BufferedReader(fr2);
+            BufferedWriter bw3=new BufferedWriter(new FileWriter(outputFile));
+            String s,s1;
+            s=br1.readLine();
+            s1=br2.readLine();
+            while(s!=null) {
+                bw3.write(s);
+                s=br1.readLine();
+                bw3.newLine();//换行
+            }
+            while(s1!=null) {
+                bw3.write(s1);
+                s1=br1.readLine();
+                bw3.newLine();
+            }
+            br1.close();
+            br2.close();
+            bw3.close();
+            System.out.println("文件合并成功...");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return outputFile;
+    }
 }

@@ -6,8 +6,14 @@ class Table {
 
     private HashMap<String, Integer> map = new HashMap<>();
 
-    HashMap<String, Integer> getTable() {
+    Table(Map<String, Integer> map) {
+        this.map = (HashMap<String, Integer>) map;
+    }
+    Table() {
 
+    }
+
+    HashMap<String, Integer> getTable() {
         return this.map;
     }
 
@@ -54,11 +60,13 @@ class Table {
             System.out.println("单词数量小于" + number);
         } else {
             try {
-                for (int i = 0; i < number; i++) {
+                for (int i = 0; i < List_Data.size(); i++) {
                     String word = List_Data.get(i).getKey();
                     String num = List_Data.get(i).getValue().toString();
-                    System.out.println(word + ":" + num + " ");
-                    fileOpt.write(word + ":" + num + " ", path);
+                    if (i < 10) {
+                        System.out.println(word + ":" + num + " ");
+                    }
+                    fileOpt.write(word + ":" + num + "\n", path);
                 }
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("排序时传入集合为空,程序结束");

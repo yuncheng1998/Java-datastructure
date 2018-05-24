@@ -35,7 +35,7 @@ public class SixthLab {
         boolean flag = true;
 
         System.out.println();
-        System.out.println("请输入要执行的操作， 0:初始化 1:查找 2:退出 3:追加统计");
+        System.out.println("请输入要执行的操作， 0:初始化 1:查找 2:退出 3:追加统计 4:追加文本");
 
         while (flag && in.hasNext()) {
             int operation = in.nextInt();
@@ -71,6 +71,15 @@ public class SixthLab {
                     table.doStatistics(table, fileOpt, LOG_PATH, number);// 排序取前十个频率最高的单词
 
                     System.out.println("重新统计完成");
+                    break;
+                case 4:
+                    System.out.println("输入追加统计的文件路径");
+                    Scanner scanner = new Scanner(System.in);
+                    String FileName = scanner.nextLine();
+                    Table table2 = new Table();
+                    table2.countWords(fileOpt.read(FileName), table2.getTable());
+                    Table table3 = new Table(MapOpt.mergeMap(table.getTable(), table2.getTable()));
+                    table3.doStatistics(table3,fileOpt,LOG_PATH,number);
                     break;
                 default:
                     System.out.println("输入参数有问题");

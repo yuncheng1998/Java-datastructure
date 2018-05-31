@@ -8,7 +8,7 @@ public class SixthLab {
     public static void main(String[] args) {
 
         String LOG_PATH = "/home/yuncheng/IdeaProjects/DataStr/src/com/lab6/log.txt";
-        String ARTICLE_PATH = "/home/yuncheng/IdeaProjects/DataStr/src/com/lab6/article.txt";
+        String ARTICLE_PATH = "/home/yuncheng/IdeaProjects/DataStr/src/com/lab6/Bible.txt";
         int number = 10;
 
         FileOpt fileOpt = new FileOpt();

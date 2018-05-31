@@ -102,9 +102,9 @@ class List {
     static String getMax(List L, int k){
         List.Node p, q;
         int k1;
-        int sum = 0, max = 0;
-        int location = 0;   //记录最大值位置
-        int value = 0;      //记录最大的data
+        int sum = L.getHead().data, max = L.getHead().data;
+        int location = L.getHead().getId();   //记录最大值位置
+        int value = L.getHead().data;      //记录最大的data
         p = L.getHead();
         if(p == null || (L.getLength()) - 1 < k ){
             return "相邻位数超范围";
@@ -122,7 +122,7 @@ class List {
                 max = sum;
             }
             p = p.next;
-            sum = 0;
+            sum = L.getHead().data;
         }
         return "第"+location + "个数，" +"值为"+ value + "，最大值:"+ max;
     }
